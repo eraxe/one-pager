@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>در حال بروزرسانی - دنیای پرچم</title>
+    <style>
+        @font-face {
+            font-family: 'Yekan';
+            src: url('yekan.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Yekan', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            padding: 20px;
+        }
+        
+        .maintenance-container {
+            max-width: 800px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-container {
+            margin-bottom: 30px;
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+        }
+        
+        .globe {
+            width: 180px;
+            height: 180px;
+            background-color: #222;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .globe-inner {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #ffcc00 0%, #ffcc00 50%, #222 50%, #222 100%);
+        }
+        
+        .continent {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.15);
+            border-radius: 50%;
+        }
+        
+        /* Africa */
+        .continent:nth-child(1) {
+            width: 40px;
+            height: 70px;
+            top: 45px;
+            left: 80px;
+            transform: rotate(15deg);
+        }
+        
+        /* Europe */
+        .continent:nth-child(2) {
+            width: 30px;
+            height: 25px;
+            top: 35px;
+            left: 65px;
+            transform: rotate(-10deg);
+        }
+        
+        /* Asia */
+        .continent:nth-child(3) {
+            width: 60px;
+            height: 50px;
+            top: 25px;
+            left: 100px;
+            transform: rotate(20deg);
+        }
+        
+        /* North America */
+        .continent:nth-child(4) {
+            width: 50px;
+            height: 40px;
+            top: 30px;
+            left: 20px;
+            transform: rotate(-15deg);
+        }
+        
+        /* South America */
+        .continent:nth-child(5) {
+            width: 25px;
+            height: 45px;
+            top: 70px;
+            left: 40px;
+            transform: rotate(10deg);
+        }
+        
+        /* Australia */
+        .continent:nth-child(6) {
+            width: 30px;
+            height: 20px;
+            top: 85px;
+            right: 30px;
+            transform: rotate(5deg);
+        }
+        
+        .equator {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.4);
+            top: 50%;
+            left: 0;
+        }
+        
+        .meridian {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            top: 0;
+        }
+        
+        .meridian:nth-child(8) { left: 25%; }
+        .meridian:nth-child(9) { left: 50%; }
+        .meridian:nth-child(10) { left: 75%; }
+        
+        .parallel {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+            left: 0;
+        }
+        
+        .parallel:nth-child(11) { top: 25%; }
+        .parallel:nth-child(12) { top: 75%; }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .info {
+            color: #777;
+            font-size: 1rem;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 70%;
+            background: linear-gradient(90deg, #ffcc00 0%, #e6b800 100%);
+            border-radius: 5px;
+            animation: progress 2s ease-in-out infinite alternate;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 0 15px;
+            color: #666;
+        }
+        
+        .contact-icon {
+            margin-left: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .decoration {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 204, 0, 0.1);
+            z-index: -1;
+        }
+        
+        .decoration:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: -100px;
+            right: -100px;
+        }
+        
+        .decoration:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            bottom: -50px;
+            left: -50px;
+        }
+        
+        @keyframes progress {
+            0% { width: 60%; }
+            100% { width: 80%; }
+        }
+        
+        @media (max-width: 768px) {
+            .maintenance-container {
+                padding: 30px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .logo-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .globe {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="maintenance-container">
+        <div class="decoration"></div>
+        <div class="decoration"></div>
+        
+        <div class="logo-container">
+            <div class="globe">
+                <div class="globe-inner">
+                    <div class="continent"></div>
+                    <div class="continent"></div>
+                    <div class="continent"></div>
+                    <div class="continent"></div>
+                    <div class="continent"></div>
+                    <div class="continent"></div>
+                    <div class="equator"></div>
+                    <div class="meridian"></div>
+                    <div class="meridian"></div>
+                    <div class="meridian"></div>
+                    <div class="parallel"></div>
+                    <div class="parallel"></div>
+                </div>
+            </div>
+        </div>
+        
+        <h1>دنیای پرچم</h1>
+        <h2>در حال بروزرسانی</h2>
+        
+        <p>
+            با عرض پوزش، وب‌سایت در حال حاضر تحت تعمیر و نگهداری است.
+            <br>
+            ما در حال کار روی بهبودها و ویژگی‌های جدید هستیم.
+            <br>
+            به زودی برمی‌گردیم و خدمات بهتری ارائه خواهیم داد.
+        </p>
+        
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        
+        <div class="info">
+            لطفاً بعداً مراجعه فرمایید. از صبر و شکیبایی شما متشکریم.
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>info@donyayeparcham.com</span>
+                <span class="contact-icon">📧</span>
+            </div>
+            <div class="contact-item">
+                <span>دنیای پرچم</span>
+                <span class="contact-icon">🌐</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
